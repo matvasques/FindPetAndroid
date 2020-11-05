@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FindPet</string>
+
+    <string name="activity_user_registration_personal_data_label">Dados pessoais</string>
+    <string name="activity_user_registration_address_data_label">Endereço</string>
+
+    <string name="user_name">Nome</string>
+    <string name="user_email">E-mail</string>
+    <string name="user_phone">Telefone</string>
+    <string name="user_password">Senha</string>
+    <string name="user_password_confirm">Confirme sua senha</string>
+    
+    <string name="user_address_street">Rua</string>
+    <string name="user_address_number">Número</string>
+    <string name="user_address_neighborhood">Bairro</string>
+    <string name="user_address_city">Cidade</string>
+    <string name="user_address_state">UF</string>
+    <string name="user_address_country">País</string>
+
+    <string name="activity_user_registration_register">Cadastrar</string>
+</resources>
