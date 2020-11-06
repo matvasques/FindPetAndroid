@@ -1,3 +1,5 @@
 package com.findpet.home.model
 
-data class HomeItem(val description: String)
+import com.findpet.home.type.HomeOptionType
+
+data class HomeItem(val imageId: Int, val description: String, val homeOptionType: HomeOptionType)

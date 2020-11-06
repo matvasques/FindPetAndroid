@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.findpet.R
-import com.findpet.userregister.view.UserRegisterActivity
+import com.findpet.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun redirect() {
-        startActivity(Intent(this, UserRegisterActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 }

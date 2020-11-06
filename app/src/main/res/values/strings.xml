@@ -4,11 +4,17 @@
     <string name="activity_user_registration_personal_data_label">Dados pessoais</string>
     <string name="activity_user_registration_address_data_label">Endereço</string>
 
+    <string name="user">Usuário</string>
     <string name="user_name">Nome</string>
     <string name="user_email">E-mail</string>
     <string name="user_phone">Telefone</string>
     <string name="user_password">Senha</string>
     <string name="user_password_confirm">Confirme sua senha</string>
+    <string name="user_sign_in">Entrar</string>
+    <string name="user_forget_password">Esqueci minha senha</string>
+    <string name="user_social_login">Ou acesse através de suas redes sociais:</string>
+    <string name="user_register">Cadastre-se</string>
+    <string name="user_my_animals">Meus PETs</string>
     
     <string name="user_address_street">Rua</string>
     <string name="user_address_number">Número</string>
@@ -17,5 +23,13 @@
     <string name="user_address_state">UF</string>
     <string name="user_address_country">País</string>
 
-    <string name="activity_user_registration_register">Cadastrar</string>
+    <string name="register">Cadastrar</string>
+
+    <string name="animal_register_your_animal">Cadastre seu PET</string>
+    <string name="animal_register_dog_label">Doguinho</string>
+    <string name="animal_register_cat_label">Gatinho</string>
+
+    <string name="activity_animal_register_animal">Cadastrar depois</string>
+    <string name="activity_animal_register_send_photo">Enviar foto</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.findpet.home.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.findpet.R
 import com.findpet.home.model.HomeItem
@@ -18,6 +19,7 @@ class HomeRecyclerAdapter(
         fun bind(item: HomeItem) {
             view.apply {
                 text.text = item.description
+                image.setImageDrawable(ContextCompat.getDrawable(context, item.imageId))
                 setOnClickListener {
                     itemClickedAction(item)
                 }
