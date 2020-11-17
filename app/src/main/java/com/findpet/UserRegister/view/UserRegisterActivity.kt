@@ -1,4 +1,4 @@
-package com.findpet.userregister.view
+package com.findpet.UserRegister.view
 
 import android.content.Intent
 import android.os.Bundle
