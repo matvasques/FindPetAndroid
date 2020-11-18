@@ -29,6 +29,9 @@
     <string name="animal_register_dog_label">Doguinho</string>
     <string name="animal_register_cat_label">Gatinho</string>
 
+    <string name="animal_register_breed">Raça</string>
+    <string name="animal_register_description">Descrição</string>
+
     <string name="activity_animal_register_animal">Cadastrar depois</string>
     <string name="activity_animal_register_send_photo">Enviar foto</string>
 

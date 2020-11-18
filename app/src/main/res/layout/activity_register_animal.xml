@@ -89,12 +89,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_half_margin"
         android:layout_marginTop="@dimen/default_margin"
-        android:hint="@string/user_name"
+        android:hint="@string/animal_register_breed"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
         app:layout_constraintStart_toEndOf="@id/activity_animal_register_name"
         app:layout_constraintTop_toBottomOf="@id/activity_animal_register_option_selected_description_label">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_animal_register_breed_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords" />
@@ -106,7 +107,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
-        android:hint="@string/user_name"
+        android:hint="@string/animal_register_description"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/activity_animal_register_name">

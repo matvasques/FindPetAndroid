@@ -1,6 +1,7 @@
 package com.findpet
 
 import android.app.Application
+import com.findpet.di.networkModule
 import com.findpet.di.repositoryModule
 import com.findpet.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +18,7 @@ class Application : Application() {
         startKoin {
             androidLogger()
             androidContext(this@Application)
-            modules(viewModelModule, repositoryModule)
+            modules(viewModelModule, repositoryModule, networkModule)
         }
     }
 }

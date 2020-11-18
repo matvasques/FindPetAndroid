@@ -52,7 +52,6 @@
             app:layout_constraintStart_toEndOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_app_icon" />
 
-        <!--        nome-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_name_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -71,8 +70,6 @@
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        email-->
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_email_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -85,13 +82,11 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_name_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        telefone-->
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_phone_til"
@@ -105,12 +100,11 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_email_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_phone_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        senha-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_password_til"
@@ -124,12 +118,11 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_phone_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!--        confirm senha-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_password_confirmation_til"
@@ -143,6 +136,7 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_password_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_password_confirmation_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -161,7 +155,6 @@
             app:layout_constraintStart_toEndOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_password_confirmation_til" />
 
-        <!--        rua -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_street_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -176,11 +169,12 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_address_label">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_street_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
-        <!--        numero -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_number_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -195,12 +189,12 @@
             app:layout_constraintTop_toTopOf="@id/activity_user_registration_address_street_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_number_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        bairro -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_neighborhood_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -213,12 +207,12 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_address_number_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_neighborhood_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        cidade -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_city_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -233,12 +227,12 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_address_neighborhood_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_city_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        uf-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_state_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -253,13 +247,13 @@
             app:layout_constraintTop_toTopOf="@id/activity_user_registration_address_city_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_state_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="2"
-                android:inputType="textCapCharacters" />
+                android:inputType="textCapCharacters"
+                android:maxLength="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--        pais-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/activity_user_registration_address_country_til"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -272,6 +266,7 @@
             app:layout_constraintTop_toBottomOf="@id/activity_user_registration_address_state_til">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_user_registration_address_country_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords" />
@@ -279,8 +274,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/activity_user_registration_register"
+            style="@style/WhiteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="@string/register"
