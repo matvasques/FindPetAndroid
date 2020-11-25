@@ -59,4 +59,6 @@ dependencies {
     implementation rootProject.layoutDependencies.recyclerView
     implementation rootProject.layoutDependencies.googleMaterial
 
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
 }

@@ -35,4 +35,9 @@
     <string name="activity_animal_register_animal">Cadastrar depois</string>
     <string name="activity_animal_register_send_photo">Enviar foto</string>
 
+    <string name="generic_error">Algo deu errado, tente novamente…</string>
+    <string name="field_required_empty_error">Este campo não pode ser vazio.</string>
+
+    <string name="welcome_text_formatter">Bem-vindo, %s</string>
+
 </resources>

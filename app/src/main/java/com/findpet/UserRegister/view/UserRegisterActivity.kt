@@ -2,13 +2,16 @@ package com.findpet.UserRegister.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.findpet.R
+import com.findpet.extensions.showTextInputLayoutError
+import com.findpet.extensions.showToast
 import com.findpet.home.view.HomeActivity
 import com.findpet.login.UserViewModel
 import data.RequestUser
+import data.Status
 import kotlinx.android.synthetic.main.activity_user_register.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -56,38 +59,75 @@ class UserRegisterActivity : AppCompatActivity() {
         country: String
     ) {
         if (name.isBlank()) {
+            activity_user_registration_name_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_name_til.showTextInputLayoutError()
         }
 
         if (email.isBlank()) {
+            activity_user_registration_email_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_email_til.showTextInputLayoutError()
         }
         if (phone.isBlank()) {
+            activity_user_registration_phone_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_phone_til.showTextInputLayoutError()
         }
         if (password.isBlank()) {
+            activity_user_registration_password_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_password_til.showTextInputLayoutError()
         }
         if (passwordConfirmation.isBlank()) {
+            activity_user_registration_password_confirmation_til.showTextInputLayoutError(
+                getString(
+                    R.string.field_required_empty_error
+                )
+            )
             return
+        } else {
+            activity_user_registration_password_confirmation_til.showTextInputLayoutError()
         }
         if (street.isBlank()) {
+            activity_user_registration_address_street_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_street_til.showTextInputLayoutError()
         }
         if (number.isBlank()) {
+            activity_user_registration_address_number_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_number_til.showTextInputLayoutError()
         }
         if (neighborhood.isBlank()) {
+            activity_user_registration_address_neighborhood_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_neighborhood_til.showTextInputLayoutError()
         }
         if (city.isBlank()) {
+            activity_user_registration_address_city_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_city_til.showTextInputLayoutError()
         }
         if (state.isBlank()) {
+            activity_user_registration_address_state_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_state_til.showTextInputLayoutError()
         }
         if (country.isBlank()) {
+            activity_user_registration_address_country_til.showTextInputLayoutError(getString(R.string.field_required_empty_error))
             return
+        } else {
+            activity_user_registration_address_country_til.showTextInputLayoutError()
         }
 
         userViewModel.onLogin(
@@ -110,10 +150,20 @@ class UserRegisterActivity : AppCompatActivity() {
 
     private fun observeUser(viewModel: UserViewModel) {
         viewModel.liveData.observe(this, Observer {
-            Toast.makeText(this, it.first, Toast.LENGTH_SHORT).show()
-
-            if (it.second) {
-                startActivity(Intent(this, HomeActivity::class.java))
+            when (it.status) {
+                Status.LOADING -> {
+                    loader.visibility = View.VISIBLE
+                }
+                Status.SUCCESS -> {
+                    showToast(it.data)
+                    loader.visibility = View.GONE
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                }
+                Status.ERROR -> {
+                    loader.visibility = View.GONE
+                    showToast(getString(R.string.generic_error))
+                }
             }
         })
     }

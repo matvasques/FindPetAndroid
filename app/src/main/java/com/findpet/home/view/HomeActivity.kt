@@ -10,10 +10,15 @@ import com.findpet.animalregister.view.AnimalSelectionActivity
 import com.findpet.home.model.HomeItem
 import com.findpet.home.type.HomeOptionType
 import com.findpet.home.view.adapter.HomeRecyclerAdapter
+import com.findpet.login.UserViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.home_content_layout.view.*
+import kotlinx.android.synthetic.main.home_header_layout.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
+
+    private val userViewModel: UserViewModel by viewModel()
 
     private val homeAdapter: HomeRecyclerAdapter by lazy {
         HomeRecyclerAdapter(list) {
@@ -54,6 +59,9 @@ class HomeActivity : AppCompatActivity() {
         content.home_content_list.apply {
             adapter = homeAdapter
         }
+
+        welcome_text.text =
+            getString(R.string.welcome_text_formatter, userViewModel.getUserFistName())
 
     }
 
