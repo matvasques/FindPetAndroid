@@ -20,13 +20,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelModule = module {
-    viewModel { AnimalViewModel(get()) }
+    viewModel { AnimalViewModel(get(), get()) }
     viewModel { UserViewModel(get()) }
     viewModel { HomeViewModel() }
 }
 
 val repositoryModule = module {
-    single { AnimalRepository(get()) }
+    single { AnimalRepository(get(), get()) }
     single { HomeRepository() }
     single { UserRepository(get(), get()) }
 }

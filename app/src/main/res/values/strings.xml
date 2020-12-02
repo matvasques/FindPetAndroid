@@ -15,7 +15,7 @@
     <string name="user_social_login">Ou acesse através de suas redes sociais:</string>
     <string name="user_register">Cadastre-se</string>
     <string name="user_my_animals">Meus PETs</string>
-    
+
     <string name="user_address_street">Rua</string>
     <string name="user_address_number">Número</string>
     <string name="user_address_neighborhood">Bairro</string>
@@ -39,5 +39,33 @@
     <string name="field_required_empty_error">Este campo não pode ser vazio.</string>
 
     <string name="welcome_text_formatter">Bem-vindo, %s</string>
+
+    <string name="no_animals_found">Não encontramos animais</string>
+
+    <string name="user_register_successful">Usuário cadastrado com sucesso</string>
+    <string name="animal_update_successful">Dados atualizados com sucesso</string>
+    <string name="animal_register_successful">Animal criado com sucesso</string>
+
+    <string name="animal_empty_list">Não há animais cadastrados.</string>
+
+    <string name="scanning_qr_code">Lendo QR Code</string>
+
+    <string name="animal_data">Dados do animal:</string>
+    <string name="owner_data">Dados do responsável:</string>
+
+    <string name="start_occurrence">Informar aparecimento</string>
+
+    <string name="not_found">Não encontrado</string>
+
+    <string name="animal_name_formatter">Nome: %s</string>
+    <string name="animal_breed_formatter">Raça: %s</string>
+    <string name="animal_description_formatter">Descrição: %s</string>
+
+    <string name="user_contact_formatter">Contato: %s</string>
+
+    <string name="user_address_formatter">%s, %s</string>
+
+    <string name="update_animal">Atualizar</string>
+
 
 </resources>

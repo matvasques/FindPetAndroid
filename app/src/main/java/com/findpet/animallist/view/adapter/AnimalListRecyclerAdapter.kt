@@ -4,31 +4,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.findpet.R
-import com.findpet.animallist.view.model.AnimalItem
+import data.ResponseAnimal
 import kotlinx.android.synthetic.main.animal_list_item.view.*
 
 class AnimalListRecyclerAdapter(
-    private val data: MutableList<AnimalItem>,
-    private val itemClickedAction: (item: AnimalItem) -> Unit,
-    private val seeQrCodeClickedAction: (item: AnimalItem) -> Unit
+    var data: MutableList<ResponseAnimal?>,
+    private val itemClickedAction: (item: ResponseAnimal) -> Unit,
+    private val seeQrCodeClickedAction: (item: ResponseAnimal) -> Unit
 ) :
     RecyclerView.Adapter<AnimalListRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(item: AnimalItem) {
+        fun bind(item: ResponseAnimal?) {
             view.apply {
-                animal_item_name.text = item.name
-                animal_item_breed.text = item.breed
-                animal_item_description.text = item.description
+                item?.let { animal ->
+                    animal_item_name.text = animal.petName
+                    animal_item_breed.text = animal.breeds
+                    animal_item_description.text = animal.description
 
-                animal_item_name_see_qr_code_image_button.setOnClickListener {
-                    seeQrCodeClickedAction(item)
+                    animal.imgUrl?.let {
+                        Glide.with(context).load(it).into(animal_item_image_view)
+                    }
+
+                    animal_item_name_see_qr_code_image_button.setOnClickListener {
+                        seeQrCodeClickedAction(animal)
+                    }
+
+                    setOnClickListener {
+                        itemClickedAction(animal)
+                    }
                 }
 
-                setOnClickListener {
-                    itemClickedAction(item)
-                }
             }
         }
     }

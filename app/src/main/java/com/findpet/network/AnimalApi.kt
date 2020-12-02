@@ -1,6 +1,5 @@
 package com.findpet.network
 
-import data.Error
 import data.RequestAnimal
 import data.ResponseAnimal
 import retrofit2.Response
@@ -8,9 +7,11 @@ import retrofit2.http.*
 
 interface AnimalApi {
 
-    /* Animals */
-    @GET("/showAnimals")
-    suspend fun getAnimals(): Response<List<ResponseAnimal?>?>
+    @GET("{userId}/showAnimals")
+    suspend fun getAnimals(@Path("userId") userId: String): Response<List<ResponseAnimal?>?>
+
+    @GET("searchForAnimal/{animalId}")
+    suspend fun getAnimal(@Path("animalId") animalId: String): Response<List<ResponseAnimal?>?>
 
     @POST("{userId}/createAnimal")
     suspend fun createAnimal(
@@ -22,7 +23,7 @@ interface AnimalApi {
     suspend fun updateAnimal(
         @Path("id") id: String,
         @Body animal: RequestAnimal
-    ): Response<Error?> //Todo:update response obj
+    ): Response<String?> //Todo:update response obj
 
     @DELETE("/deleteAnimal")
     suspend fun deleteAnimal(): Response<Any>

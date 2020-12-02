@@ -5,17 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.findpet.R
 import com.findpet.animallist.view.AnimalViewModel
+import com.findpet.extensions.showToast
 import com.findpet.home.type.AnimalType
-import data.RequestAnimal
+import data.*
 import kotlinx.android.synthetic.main.activity_register_animal.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
-private const val ANIMAL_TYPE_KEY = "ANIMAL_TYPE"
 
 class AnimalRegisterActivity : AppCompatActivity() {
 
@@ -25,10 +25,22 @@ class AnimalRegisterActivity : AppCompatActivity() {
         AnimalType.fromValue(intent.getStringExtra(ANIMAL_TYPE_KEY))
     }
 
+    private val animal: ResponseAnimal? by lazy {
+        intent.extras?.get(ANIMAL_KEY) as? ResponseAnimal?
+    }
+
+    private val isUpdateAnimal: Boolean
+        get() = animal != null
+
     companion object {
         fun getStartIntent(context: Context, animalTypeValue: String) =
             Intent(context, AnimalRegisterActivity::class.java).apply {
                 putExtra(ANIMAL_TYPE_KEY, animalTypeValue)
+            }
+
+        fun getStartIntent(context: Context, animal: ResponseAnimal) =
+            Intent(context, AnimalRegisterActivity::class.java).apply {
+                putExtra(ANIMAL_KEY, animal)
             }
     }
 
@@ -45,6 +57,15 @@ class AnimalRegisterActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
+
+        if (isUpdateAnimal) {
+            activity_animal_register_register_button.text = getString(R.string.update_animal)
+
+            animal?.imgUrl?.let {
+                Glide.with(this).load(it).into(activity_animal_register_option_selected_icon)
+            }
+        }
+
         when (selectedOption) {
             AnimalType.DOG -> {
                 activity_animal_register_option_selected_icon.setImageResource(R.drawable.icon_dog)
@@ -86,25 +107,72 @@ class AnimalRegisterActivity : AppCompatActivity() {
         })
 
         activity_animal_register_register_button.setOnClickListener {
-            animalViewModel.createAnimal(
-                1,
-                RequestAnimal(
-                    activity_animal_register_name_edit_text.text.toString(),
-                    activity_animal_register_breed_edit_text.text.toString(),
-                    activity_user_registration_name_et.text.toString(),
-                    ""
+            if (isUpdateAnimal) {
+                animalViewModel.updateAnimal(
+                    ResponseAnimal(
+                        animal?.id, activity_animal_register_name_edit_text.text.toString(),
+                        activity_animal_register_breed_edit_text.text.toString(),
+                        activity_user_registration_description_et.text.toString(),
+                        "", animal?.userId
+                    )
                 )
-            )
+            } else {
+                animalViewModel.createAnimal(
+                    1,
+                    RequestAnimal(
+                        activity_animal_register_name_edit_text.text.toString(),
+                        activity_animal_register_breed_edit_text.text.toString(),
+                        activity_user_registration_description_et.text.toString(),
+                        ""
+                    )
+                )
+            }
+        }
+
+
+        animal?.let {
+            activity_animal_register_breed_edit_text.setText(it.breeds)
+            activity_animal_register_name_edit_text.setText(it.petName)
+            activity_user_registration_description_et.setText(it.breeds)
         }
     }
 
 
     private fun observeAnimal(viewModel: AnimalViewModel) {
-        viewModel.liveData.observe(this, Observer {
-            Toast.makeText(this, it.first, Toast.LENGTH_SHORT).show()
+        viewModel.createAnimalLiveData.observe(this, Observer {
+            when (it.status) {
+                Status.SUCCESS -> {
+                    loader.visibility = View.GONE
+                    showToast(getString(R.string.animal_register_successful))
+                    setResult(ANIMAL_LIST_REQUEST_CODE)
+                    finish()
+                }
+                Status.ERROR -> {
+                    loader.visibility = View.GONE
+                    showToast(R.string.generic_error)
+                }
+                Status.LOADING -> {
+                    loader.visibility = View.VISIBLE
+                }
+            }
+        })
 
-            if (it.second) {
-                finish()
+        viewModel.updateAnimalLiveData.observe(this, Observer {
+            when (it.status) {
+                Status.SUCCESS -> {
+                    loader.visibility = View.GONE
+                    showToast(getString(R.string.animal_update_successful))
+                    setResult(ANIMAL_LIST_REQUEST_CODE)
+                    finish()
+                }
+
+                Status.ERROR -> {
+                    loader.visibility = View.GONE
+                    showToast(R.string.generic_error)
+                }
+                Status.LOADING -> {
+                    loader.visibility = View.VISIBLE
+                }
             }
         })
     }

@@ -137,6 +137,7 @@ class UserRegisterActivity : AppCompatActivity() {
                 phone,
                 password,
                 passwordConfirmation,
+                "",
                 number.toInt(),
                 "",
                 "",
@@ -155,7 +156,7 @@ class UserRegisterActivity : AppCompatActivity() {
                     loader.visibility = View.VISIBLE
                 }
                 Status.SUCCESS -> {
-                    showToast(it.data)
+                    showToast(R.string.user_register_successful)
                     loader.visibility = View.GONE
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()

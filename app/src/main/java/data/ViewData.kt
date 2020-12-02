@@ -7,4 +7,5 @@ enum class Status {
     SUCCESS,
     ERROR,
     INVALID,
+    EMPTY,
 }
