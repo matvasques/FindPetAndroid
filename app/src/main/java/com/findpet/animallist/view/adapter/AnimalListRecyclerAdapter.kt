@@ -24,8 +24,8 @@ class AnimalListRecyclerAdapter(
                     animal_item_breed.text = animal.breeds
                     animal_item_description.text = animal.description
 
-                    animal.imgUrl?.let {
-                        Glide.with(context).load(it).into(animal_item_image_view)
+                    if (!animal.imgUrl.isNullOrBlank()){
+                        Glide.with(context).load(animal.imgUrl).into(animal_item_image_view)
                     }
 
                     animal_item_name_see_qr_code_image_button.setOnClickListener {

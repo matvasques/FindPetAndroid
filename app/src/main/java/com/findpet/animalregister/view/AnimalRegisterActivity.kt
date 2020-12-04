@@ -61,8 +61,8 @@ class AnimalRegisterActivity : AppCompatActivity() {
         if (isUpdateAnimal) {
             activity_animal_register_register_button.text = getString(R.string.update_animal)
 
-            animal?.imgUrl?.let {
-                Glide.with(this).load(it).into(activity_animal_register_option_selected_icon)
+            if (!animal?.imgUrl.isNullOrBlank()) {
+                Glide.with(this).load(animal?.imgUrl).into(activity_animal_register_option_selected_icon)
             }
         }
 

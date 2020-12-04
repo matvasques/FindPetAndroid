@@ -108,6 +108,7 @@ class AnimalListActivity : AppCompatActivity() {
                 Status.EMPTY -> {
                     showToast(getString(R.string.no_animals_found))
                     activity_animal_empty_state_text.visibility = View.VISIBLE
+                    loader.visibility = View.GONE
                 }
             }
         })
